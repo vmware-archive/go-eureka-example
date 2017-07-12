@@ -4,6 +4,10 @@
 	"GodepVersion": "v79",
 	"Deps": [
 		{
+			"ImportPath": "github.com/pivotal-cf-experimental/go-eureka-example/lib",
+			"Rev": "86e1ce00c23d6d135893f5e8ac9e6be1d59cdd3e"
+		},
+		{
 			"ImportPath": "github.com/ryanmoran/viron",
 			"Rev": "f3865b4826c87b16d3a67e308336b319b3b6859a"
 		}
