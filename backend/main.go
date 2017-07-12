@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/pivotal-cf-experimental/go-eureka-example/lib"
 	"github.com/ryanmoran/viron"
 	"github.com/tedsuo/ifrit"
 	"github.com/tedsuo/ifrit/grouper"
@@ -215,9 +216,9 @@ func main() {
 
 	members := []grouper.Member{grouper.Member{"info_server", server}}
 
-	var serviceInstances []ServiceInstance
+	var serviceInstances []lib.ServiceInstance
 	for _, userPort := range userPorts {
-		serviceInstances = append(serviceInstances, ServiceInstance{
+		serviceInstances = append(serviceInstances, lib.ServiceInstance{
 			Name:     env.VCAPApplication.ApplicationName,
 			Instance: env.VCAPApplication.InstanceIndex,
 			IP:       localIP,
@@ -233,13 +234,13 @@ func main() {
 
 	serviceCredentials := env.VCAPServices.ServiceRegistry[0].Credentials
 
-	uaaClient := &UAAClient{
+	uaaClient := &lib.UAAClient{
 		BaseURL: serviceCredentials.AccessTokenURI,
 		Name:    serviceCredentials.ClientID,
 		Secret:  serviceCredentials.ClientSecret,
 	}
 
-	eurekaClient := &EurekaClient{
+	eurekaClient := &lib.EurekaClient{
 		BaseURL:          serviceCredentials.RegistryURI,
 		HttpClient:       http.DefaultClient,
 		UAAClient:        uaaClient,

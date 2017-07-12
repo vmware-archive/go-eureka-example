@@ -1,4 +1,4 @@
-package main
+package lib
 
 import (
 	"bytes"
@@ -86,18 +86,18 @@ func (e *EurekaClient) Register(serviceInstance ServiceInstance) error {
 	return nil
 }
 
-type Instance struct {
-	IPAddr string                 `json:"ipAddr"`
-	App    string                 `json:"app"`
-	Port   map[string]interface{} `json:"port"`
+type EurekaRegistryResp struct {
+	Application Application `json:"application"`
 }
 
 type Application struct {
 	Instances []Instance `json:"instance"`
 }
 
-type EurekaRegistryResp struct {
-	Application Application `json:"application"`
+type Instance struct {
+	IPAddr string                 `json:"ipAddr"`
+	App    string                 `json:"app"`
+	Port   map[string]interface{} `json:"port"`
 }
 
 func (e *EurekaClient) GetAppByName(appName string) (string, error) {

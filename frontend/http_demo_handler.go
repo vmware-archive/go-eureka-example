@@ -9,6 +9,7 @@ import (
 	"net/url"
 	"time"
 
+	"github.com/pivotal-cf-experimental/go-eureka-example/lib"
 	"github.com/ryanmoran/viron"
 )
 
@@ -70,13 +71,13 @@ func (h *HttpDemoHandler) ServeHTTP(resp http.ResponseWriter, req *http.Request)
 	}
 	serviceCredentials := env.VCAPServices.ServiceRegistry[0].Credentials
 
-	uaaClient := &UAAClient{
+	uaaClient := &lib.UAAClient{
 		BaseURL: serviceCredentials.AccessTokenURI,
 		Name:    serviceCredentials.ClientID,
 		Secret:  serviceCredentials.ClientSecret,
 	}
 
-	eurekaClient := &EurekaClient{
+	eurekaClient := &lib.EurekaClient{
 		BaseURL:    serviceCredentials.RegistryURI,
 		HttpClient: http.DefaultClient,
 		UAAClient:  uaaClient,
