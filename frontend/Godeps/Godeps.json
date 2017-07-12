@@ -1,0 +1,11 @@
+{
+	"ImportPath": "github.com/pivotal-cf-experimental/go-eureka-example/frontend",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/ryanmoran/viron",
+			"Rev": "f3865b4826c87b16d3a67e308336b319b3b6859a"
+		}
+	]
+}

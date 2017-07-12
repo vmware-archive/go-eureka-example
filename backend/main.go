@@ -35,7 +35,7 @@ type Environment struct {
 		InstanceIndex   int    `json:"instance_index"`
 	} `env:"VCAP_APPLICATION" env-required:"true"`
 
-	CFInstanceInternalIP string `"CF_INSTANCE_INTERNAL_IP" env-required:"true"`
+	CFInstanceInternalIP string `env:"CF_INSTANCE_INTERNAL_IP" env-required:"true"`
 }
 
 type InfoHandler struct {
@@ -99,6 +99,7 @@ var publicPageTemplate string = `
 type CatPage struct {
 	Stylesheet template.HTML
 	Port       int
+	IPAddr     string
 }
 
 var catPageTemplate string = `
@@ -122,7 +123,7 @@ var catPageTemplate string = `
 				<div class="jumbotron">
 					<p class="lead">Hello from the backend, here is a picture of a cat:</p>
 					<p><img src="http://i.imgur.com/1uYroRF.gif" /></p>
-				  <p class="lead">You reached me on port {{.Port}}</p>
+				  <p class="lead">My IP is {{.IPAddr}}, you reached me on port {{.Port}}</p>
 				</div>
 			</div>
 		</div>
@@ -149,7 +150,8 @@ func (h *InfoHandler) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 }
 
 type CatHandler struct {
-	Port int
+	Port   int
+	IPAddr string
 }
 
 func (h *CatHandler) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
@@ -158,6 +160,7 @@ func (h *CatHandler) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	err := template.Execute(resp, CatPage{
 		Stylesheet: stylesheet,
 		Port:       h.Port,
+		IPAddr:     h.IPAddr,
 	})
 	if err != nil {
 		panic(err)
@@ -221,7 +224,8 @@ func main() {
 			Port:     userPort,
 		})
 		catHandler := &CatHandler{
-			Port: userPort,
+			Port:   userPort,
+			IPAddr: localIP,
 		}
 		members = append(members, grouper.Member{fmt.Sprintf("cat_server_%d", userPort),
 			http_server.New(fmt.Sprintf("0.0.0.0:%d", userPort), catHandler)})
