@@ -1,0 +1,27 @@
+{
+	"ImportPath": "github.com/pivotal-cf-experimental/go-eureka-example/backend",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/ryanmoran/viron",
+			"Rev": "f3865b4826c87b16d3a67e308336b319b3b6859a"
+		},
+		{
+			"ImportPath": "github.com/tedsuo/ifrit",
+			"Rev": "274eec5487d264f39f8412f125e5b80410e3d3c4"
+		},
+		{
+			"ImportPath": "github.com/tedsuo/ifrit/grouper",
+			"Rev": "274eec5487d264f39f8412f125e5b80410e3d3c4"
+		},
+		{
+			"ImportPath": "github.com/tedsuo/ifrit/http_server",
+			"Rev": "274eec5487d264f39f8412f125e5b80410e3d3c4"
+		},
+		{
+			"ImportPath": "github.com/tedsuo/ifrit/sigmon",
+			"Rev": "274eec5487d264f39f8412f125e5b80410e3d3c4"
+		}
+	]
+}

@@ -1,0 +1,9 @@
+---
+applications:
+  - name: backend
+    memory: 32M
+    disk_quota: 32M
+    buildpack: go_buildpack
+    env:
+      GOPACKAGENAME: github.com/pivotal-cf-experimental/go-eureka-example
+      CATS_PORTS: 7007
