@@ -5,4 +5,4 @@ applications:
     disk_quota: 32M
     buildpack: go_buildpack
     env:
-      GOPACKAGENAME: example-apps/cats-and-dogs/frontend
+      GOPACKAGENAME: github.com/pivotal-cf-experimental/go-eureka-example
