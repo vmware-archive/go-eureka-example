@@ -1,0 +1,6 @@
+{
+	"ImportPath": "github.com/pivotal-cf-experimental/go-eureka-example/lib",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v79",
+	"Deps": []
+}
