@@ -5,7 +5,7 @@
 	"Deps": [
 		{
 			"ImportPath": "github.com/pivotal-cf-experimental/go-eureka-example/lib",
-			"Rev": "86e1ce00c23d6d135893f5e8ac9e6be1d59cdd3e"
+			"Rev": "84ebeaa942b186a5609c7360221ec6b65baf2b32"
 		},
 		{
 			"ImportPath": "github.com/ryanmoran/viron",
